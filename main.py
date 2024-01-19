@@ -1,43 +1,39 @@
-def Calculator(first, second, Symbols):
-    if Symbols == '+':
-        temp = first + second
-
-    elif Symbols == '-':
-        temp = first - second
-
-    elif Symbols == '*':
-        temp = first * second
-
-    elif Symbols == '/':
-        temp = first / second
-
-    elif Symbols == '%':
-        temp = first % second
-
-    elif Symbols == '**':
-        temp = first ** second
-
-    elif Symbols == '//':
-        temp = first // second
-
-    else:
-        print("Enter a valid Operator and Values !")
-
-    return f"{first} {Symbols} {second} = {temp}"
+import random
+import string
 
 
-print("Select Arithmetic Operators: ")
-print("1. Addition (+)")
-print("2. Subtraction (-)")
-print("3. Multiplication (*)")
-print("4. Division (/)")
-print("5. reminder (%)")
-print("6. Exponent (**)")
-print("7. Floor Division (//)")
+def generate_password(length):
+
+    lowercase_letters = string.ascii_lowercase
+    uppercase_letters = string.ascii_uppercase
+    digits = string.digits
+    special_characters = string.punctuation
 
 
-choose = input("Enter choice (+, -, *, /, %, **, //): ")
-sym = choose
-a = int(input("Enter the first Values: "))
-b = int(input("Enter the second Values: "))
-print(Calculator(a, b, sym))
+    all_characters = lowercase_letters + uppercase_letters + digits + special_characters
+
+
+    length = max(length, 8)
+
+
+    password = ''.join(random.choice(all_characters) for _ in range(length))
+
+    return password
+
+
+def main():
+
+    try:
+        length = int(input("Enter the desired password length: "))
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+        return
+
+
+    password = generate_password(length)
+    print(f"\nGenerated Password: {password}")
+
+
+if __name__ == "__main__":
+    main()
+
